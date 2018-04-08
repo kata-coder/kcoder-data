@@ -6,13 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.UUID;
-
 @Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Exercise {
+  @NonNull
+  private String id;
   @NonNull
   private String content;
 }

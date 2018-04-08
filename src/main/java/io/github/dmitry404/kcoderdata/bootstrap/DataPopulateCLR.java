@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 @Component
@@ -38,7 +39,7 @@ public class DataPopulateCLR implements CommandLineRunner {
       exercisesRepository.deleteAll()
           .thenMany(
               Flux.fromIterable(katas)
-                  .map(Exercise::new)
+                  .map(kata -> new Exercise(UUID.randomUUID().toString(), kata))
                   .flatMap(exercisesRepository::save)
           )
           .subscribe(
