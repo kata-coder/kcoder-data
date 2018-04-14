@@ -33,7 +33,7 @@ class ExercisesServiceTests {
   @ParameterizedTest
   @ValueSource(ints = { 1, 3, 7 })
   void fetchDataAccordingToSizeParam(int size) {
-    Flux<Exercise> allExercises = Flux.just(0).repeat(10).map(id -> new Exercise(""));
+    Flux<Exercise> allExercises = Flux.just(0).repeat(10).map(id -> new Exercise("", ""));
     when(repository.findAll()).thenReturn(allExercises);
 
     exercisesDataService = new ExercisesDataService(repository);
